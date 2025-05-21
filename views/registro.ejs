@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Eco Culiacán</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Puedes mover estos estilos a style.css si quieres unificar */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header.encabezado {
+            background-color: #fff;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header.encabezado .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .contenedor-principal-centrado {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        main.contenedor-registro {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        main.contenedor-registro h1 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        main.contenedor-registro .formulario label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        /* Contenedor para el input y el icono de mostrar/ocultar contraseña */
+        .password-container {
+            position: relative;
+            margin-bottom: 15px; /* Mueve el margen a este contenedor */
+        }
+
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding-right: 40px; /* Deja espacio para el icono */
+        }
+        
+        main.contenedor-registro .formulario input[type="text"],
+        main.contenedor-registro .formulario select { /* Añadido select para el género */
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #666;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-password img {
+            width: 24px;
+            height: 24px;
+        }
+
+
+        main.contenedor-registro .formulario button.btn-registrar {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+        }
+        main.contenedor-registro .formulario button.btn-registrar:hover {
+            background-color: #218838;
+        }
+
+        /* Estilos para el botón "Iniciar Sesión" en el header (si existe) */
+        .btn-iniciar-sesion {
+            background-color: #007bff; 
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-iniciar-sesion:hover {
+            background-color: #0056b3;
+        }
+
+
+        footer.pie {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        footer.pie a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer.pie .redes {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        footer.pie .redes a {
+            margin: 0 10px;
+        }
+
+        footer.pie .redes img.social-icon {
+            width: 30px;
+            height: auto;
+            transition: transform 0.2s ease;
+        }
+        footer.pie .redes img.social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilos para mensajes de error/éxito */
+        .flash-message {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .error-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            text-align: left;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="encabezado">
+    <div class="logo">
+        <a href="/"><img src="/images/ECO.png" alt="Logo Eco Culiacán" class="logo"/><span></span></a>
+    </div>
+    <a href="/login"><button class="btn-iniciar-sesion">Iniciar Sesión</button></a>
+</header>
+
+<div class="contenedor-principal-centrado">
+    <main class="contenedor-registro">
+        <div class="iconousuario-container">
+            <img src="/images/usuario.png" alt="Icono de Usuario" class="iconousuario-img">
+        </div>
+
+        <h1>Registrarse</h1>
+
+        <% if (success_msg && success_msg.length > 0) { %>
+            <div class="flash-message success">
+                <%= success_msg %>
+            </div>
+        <% } %>
+        <% if (error_msg && error_msg.length > 0) { %>
+            <div class="flash-message error">
+                <%= error_msg %>
+            </div>
+        <% } %>
+
+        <% if (typeof errors != 'undefined' && errors.length > 0) { %>
+            <ul class="error-list">
+                <% errors.forEach(function(error) { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        <% } %>
+
+        <form class="formulario" action="/registro" method="POST">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="username" placeholder="Ingresa tu usuario" required value="<%= typeof username != 'undefined' ? username : '' %>"/> 
+            
+            <label for="password">Contraseña</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres" required value="<%= typeof password != 'undefined' ? password : '' %>"/> 
+                <span class="toggle-password" onclick="togglePasswordVisibility('password', this)">
+                    <img src="/images/ojo.png" alt="Mostrar/Ocultar Contraseña" id="toggleIconPassword">
+                </span>
+            </div>
+
+            <label for="confirmPassword">Confirmar Contraseña</label>
+            <div class="password-container">
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repite contraseña" required value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>"/> 
+                <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)">
+                    <img src="/images/ojo.png" alt="Mostrar/Ocultar Contraseña" id="toggleIconConfirm">
+                </span>
+            </div>
+
+            <label for="gender">Género</label>
+            <select id="gender" name="gender" required>
+                <option value="">Selecciona tu género</option>
+                <option value="male" <%= typeof gender != 'undefined' && gender === 'male' ? 'selected' : '' %>>Masculino</option>
+                <option value="female" <%= typeof gender != 'undefined' && gender === 'female' ? 'selected' : '' %>>Femenino</option>
+                <option value="prefer_not_to_say" <%= typeof gender != 'undefined' && gender === 'prefer_not_to_say' ? 'selected' : '' %>>Prefiero no decirlo</option>
+            </select>
+
+            <button type="submit" class="btn-registrar">Registrarme</button>
+        </form>
+        <p style="margin-top: 20px;">¿Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a></p>
+    </main>
+</div>
+
+<footer class="pie">
+    <p><em>Menos basura, más futuro</em></p>
+        <a href="https://x.com/ECOCuliacan" target="_blank">https://x.com/ECOCuliacan</a>
+<div class="social-icons">
+    <a href="https://www.facebook.com/share/16Je91rWsc/" target="_blank"><img src="/images/facebook.png" alt="Facebook"></a>
+    <a href="https://x.com/ECOCuliacan" target="_blank"><img src="/images/twitter.png" alt="Twitter"></a>
+    <a href="https://www.instagram.com/eco.culiacan/profilecard/" target="_blank"><img src="/images/ig.png" alt="Instagram"></a>
+</div>
+</footer>
+
+<script>
+    function togglePasswordVisibility(fieldId, iconElement) {
+        const passwordField = document.getElementById(fieldId);
+        const toggleIcon = iconElement.querySelector('img');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleIcon.src = '/images/ojo.png'; // Cambia al icono de ojo abierto
+            toggleIcon.alt = 'Ocultar Contraseña';
+        } else {
+            passwordField.type = 'password';
+            toggleIcon.src = '/images/ojoff.png'; // Cambia al icono de ojo cerrado
+            toggleIcon.alt = 'Mostrar Contraseña';
+        }
+    }
+</script>
+
+</body>
+</html>
