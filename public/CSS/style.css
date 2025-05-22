@@ -1,0 +1,425 @@
+/*! ********************************************* AJUSTES GENERALES *********************************************/
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Cambié el fondo a blanco */
+    color: #000000;       /* Cambié el color del texto a negro */
+    display: flex; /* Añadido para que el footer se pegue abajo */
+    flex-direction: column; /* Añadido para que el footer se pegue abajo */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+header.encabezado {
+    background-color: #fff;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header.encabezado .logo img {
+    width: 150px;
+    height: auto;
+}
+
+.btn-iniciar-sesion,
+.btn-registrarme {
+    background-color: #aabf40 !important; /* Verde que solicitaste */
+    color: white !important;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 10px; /* Espacio entre los botones */
+    display: inline-block; /* Asegura que el padding y margen funcionen como un botón */
+    transition: all 0.2s;
+    width: 135px;
+}
+.btn-iniciar-sesion:hover,
+.btn-registrarme:hover {
+    background-color: #8c9c32 !important;
+}
+
+.main-content{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-content  h1 {
+    color: #28a745;
+    margin-bottom: 30px;
+}
+
+.main-content .btn-ingresar {
+    background-color: #28a745;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.main-content .btn-ingresar:hover {
+    background-color: #218838;
+}
+
+.main-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+footer.pie {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+footer.pie a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer.pie .redes {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+footer.pie .redes a {
+    margin: 0 10px;
+}
+
+footer.pie .redes img.social-icon {
+    width: 30px;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+footer.pie .redes img.social-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para mensajes flash */
+.flash-message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%; /* Para que ocupe el ancho completo del contenedor */
+    box-sizing: border-box; /* Para que el padding no desborde */
+}
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.flash-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Media Queries para diferentes tamaños de pantalla */
+
+/* Pantallas más pequeñas (móviles y tablets pequeñas - hasta 768px de ancho) */
+@media screen and (max-width: 768px) {
+    header.encabezado .logo img {
+        width: 120px;
+    }
+
+    .social-icon {
+        width: 25px;
+        margin-right: 8px;
+    }
+}
+
+/* Pantallas aún más pequeñas (móviles - hasta 480px de ancho) */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.7em;
+    }
+
+    header.encabezado .logo img {
+        width: 100px;
+    }
+
+    .header-buttons{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+    
+    .header-buttons button{
+        margin: 5px;
+    }
+
+    .social-icon {
+        width: 20px;
+        margin-right: 5px;
+    }
+}
+
+/* Pantallas aún más pequeñas (móviles - hasta 280px de ancho) */
+@media screen and (max-width: 280px) {
+    header.encabezado{
+        flex-direction: column;
+    }
+}
+
+/*! ********************************************* LOGIN *********************************************/
+/* Alineación para el contenedor principal centrado */
+.contenedor-principal-centrado {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilos específicos para la página de inicio de sesión y registro (formularios) */
+/* Contenedores principales de login y registro */
+.contenedor-login, .contenedor-registro {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px; /* Max-width para login */
+    margin: 30px auto; /* Centrar y darle margen */
+    text-align: center;
+    flex-grow: 1; /* Para que ocupe el espacio y empuje el footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+}
+
+.contenedor-registro {
+    max-width: 450px; /* Ligeramente más ancho para registro si tiene más campos */
+}
+
+/* Estilos para los botones dentro de formularios login/registro */
+.btn-iniciar, .btn-registrar {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Para que el botón ocupe todo el ancho */
+    margin-top: 15px; /* Espacio entre el último campo y el botón */
+}
+
+.btn-iniciar:hover, .btn-registrar:hover {
+    background-color: #218838;
+}
+
+.iconousuario-img {
+    width: 100px;
+}
+
+/* Este es el contenedor principal para campos que tendrán un icono (usuario, contraseña) */
+.input-container {
+    position: relative; /* Clave para posicionar el icono dentro */
+    margin-bottom: 15px; /* Espacio debajo de cada campo input con icono */
+}
+
+/* Contenedor para el input y el icono de mostrar/ocultar contraseña */
+.password-container {
+    position: relative;
+    margin-bottom: 15px; /* Mueve el margen a este contenedor */
+}
+
+/* Estilo para el icono dentro del input (para usuario y ojo de contraseña) */
+.input-icon, .toggle-password {
+    position: absolute;
+    right: 10px; /* Distancia desde el borde derecho del input */
+    top: 50%;
+    transform: translateY(-50%); /* Centra verticalmente el icono */
+    cursor: pointer; /* Indica que es clickeable */
+    display: flex; /* Para centrar la imagen si tiene algún padding */
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Para que el click área del span sea más grande */
+    padding: 0 5px; /* Pequeño padding para el click area */
+}
+
+.input-icon img, .toggle-password img {
+    width: 24px; /* Tamaño de los iconos (ojo, usuario en input) */
+    height: 24px;
+}
+
+/* Estilo para los inputs de texto y contraseña DENTRO de un .input-container */
+.input-container input[type="text"],
+.input-container input[type="password"],
+.input-container select { /* Aseguramos que select también se vea bien si lo metemos aquí */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding-right: 40px; /* Deja espacio para el icono (24px de icono + 10px de padding derecho + 6px de margen) */
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding-right: 40px; /* Deja espacio para el icono */
+}
+
+/*! ********************************************* REGISTRO *********************************************/
+.form-group {
+    margin-bottom: 20px; /* Margen entre grupos de formularios */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.primary-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.secondary-btn {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 30px; /* Tamaño de los iconos sociales */
+    height: auto;
+}
+
+/* Estilos específicos de la página de Registro */
+.register-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Flex grow para que ocupe espacio y empuje el footer si es el main content */
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente si es un solo elemento */
+    align-items: center; /* Centra el contenido horizontalmente si es un solo elemento */
+    text-align: center; /* Alinea el texto centralmente */
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+}
+
+.terms input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+
+/* Estilos específicos para otras páginas */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero .main-action-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.ecofactura-image {
+    max-width: 80%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.error-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: left;
+    padding: 10px;
+    width: 100%; /* Para que ocupe el ancho completo del contenedor */
+    box-sizing: border-box;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+

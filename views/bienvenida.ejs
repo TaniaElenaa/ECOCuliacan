@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Bienvenido(a) - Eco Culiacán</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="encabezado">
+        <div class="logo">
+            <a href="/"><img src="/images/ECO.png" alt="Logo Eco Culiacán"/><span></span></a>
+        </div>
+        <div>
+            <% if (user) { %>
+                <span style="margin-right: 15px;">
+                    <% if (user && user.gender === 'female') { %> 
+                        ¡Bienvenida, <%= user.username %>!
+                    <% } else if (user && user.gender === 'male') { %> 
+                        ¡Bienvenido, <%= user.username %>!
+                    <% } else { %>
+                        ¡Hola, <%= user.username %>!
+                    <% } %>
+                </span>
+                <a href="/logout"><button class="secondary-btn">Cerrar Sesión</button></a>
+            <% } else { %>
+                <a href="/login"><button class="btn-iniciar-sesion">Iniciar Sesión</button></a>
+                <a href="/registro"><button class="btn-registrarme">Registrarme</button></a>
+            <% } %>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <% if (success_msg && success_msg.length > 0) { %>
+            <div class="flash-message success">
+                <%= success_msg %>
+            </div>
+        <% } %>
+        <% if (error_msg && error_msg.length > 0) { %>
+            <div class="flash-message error">
+                <%= error_msg %>
+            </div>
+        <% } %>
+        <% if (error && error.length > 0) { %> 
+            <div class="flash-message error">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <h1>
+            <% if (user) { %> 
+                <% if (user.gender === 'female') { %>
+                    ¡Bienvenida a tu cuenta!
+                <% } else if (user.gender === 'male') { %>
+                    ¡Bienvenido a tu cuenta!
+                <% } else { %>
+                    ¡Bienvenido(a) a tu cuenta!
+                <% } %>
+            <% } else { %>
+                ¡Bienvenido(a) al servicio de recolección!
+            <% } %>
+        </h1>
+        
+        <p>Gracias por ser parte de ECO Culiacán.</p>
+        <p>Aquí puedes gestionar tus reportes o explorar otras opciones.</p>
+
+        <% if (user) { %>
+            <a href="/seleccion-zona" class="primary-btn" style="margin-top: 20px; display: inline-block;">Hacer un Reporte</a>
+        <% } else { %>
+            <a href="/login" class="primary-btn" style="margin-top: 20px; display: inline-block;">Ingresar</a>
+        <% } %>
+
+        <% if (!user) { %>
+            <img src="/images/camion.gif" alt="Recolección de Basura" style="margin-top: 30px; max-width: 100%; height: auto;">
+        <% } %>
+
+    </main>
+
+    <footer class="pie">
+        <p>Menos basura, más futuro</p>
+        <p><a href="https://ecogreen.com.mx/" target="_blank">ecogreen.com.mx</a></p>
+        <div class="social-icons">
+            <a href="#"><img src="/images/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="/images/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="/images/ig.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const successMessageDiv = document.querySelector('.flash-message.success');
+            const errorMessageDiv = document.querySelector('.flash-message.error');
+            
+            const genericErrorPassportDiv = document.querySelector('.flash-message.error'); 
+
+            if (successMessageDiv && successMessageDiv.textContent.trim().length > 0) {
+                alert('Mensaje de Éxito: ' + successMessageDiv.textContent.trim());
+            } else if (errorMessageDiv && errorMessageDiv.textContent.trim().length > 0) {
+                alert('Mensaje de Error: ' + errorMessageDiv.textContent.trim());
+            } else if (genericErrorPassportDiv && genericErrorPassportDiv.textContent.trim().length > 0) {
+                alert('Mensaje de Error General: ' + genericErrorPassportDiv.textContent.trim());
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Reporte - ECO Culiacán</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header.encabezado {
+            background-color: #fff;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header.encabezado .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .report-form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            text-align: left;
+            display: flex; /* Añadido para controlar el layout interno */
+            flex-direction: column; /* Para apilar elementos verticalmente */
+            align-items: center; /* Para centrar la imagen y el título */
+        }
+
+        /* Estilo para la imagen dentro del contenedor del formulario */
+        .report-form-container img {
+            width: 80px; /* Ajusta el tamaño según tu imagen y diseño */
+            height: auto;
+            margin-bottom: 20px; /* Espacio debajo de la imagen */
+        }
+
+        h1 {
+            color: #28a745;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 100%; /* Asegura que el h1 ocupe todo el ancho para centrado */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%; /* Asegura que los grupos de formulario usen el ancho completo */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: calc(100% - 20px); /* Ajustado para padding */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .flash-message {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+        }
+
+        footer .social-icons img {
+            width: 30px;
+            height: auto;
+            transition: transform 0.2s ease;
+        }
+        footer .social-icons img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="encabezado">
+        <div class="logo">
+            <a href="/"><img src="/images/ECO.png" alt="Logo ECO Culiacán"/><span></span></a>
+        </div>
+        <div>
+            <% if (user) { %>
+                <span style="margin-right: 15px;">¡Hola, <%= user.username %>!</span>
+                <a href="/logout"><button class="secondary-btn">Cerrar Sesión</button></a>
+            <% } else { %>
+                <a href="/login"><button class="btn-iniciar-sesion">Iniciar Sesión</button></a>
+            <% } %>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <% if (success_msg && success_msg.length > 0) { %>
+            <div class="flash-message success">
+                <%= success_msg %>
+            </div>
+        <% } %>
+        <% if (error_msg && error_msg.length > 0) { %>
+            <div class="flash-message error">
+                <%= error_msg %>
+            </div>
+        <% } %>
+        <% if (error && error.length > 0) { %>
+            <div class="flash-message error">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <div class="report-form-container">
+            <img src="/images/feliz.gif" alt="Icono de Reporte" />
+
+            <h1>Reportar Problema de Recolección</h1>
+            <form action="/crear-reporte" method="POST">
+                <div class="form-group">
+                    <label for="fullName">Nombre Completo:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Dirección de la Calle:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">Código Postal:</label>
+                    <input type="text" id="zipCode" name="zipCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Número Celular:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="problemDescription">Descripción del Problema en la Calle:</label>
+                    <textarea id="problemDescription" name="problemDescription" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Reporte</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="pie">
+        <p>Menos basura, más futuro</p>
+        <a href="https://ECOCuliacán.com.mx/" target="_blank">ecogreen.com.mx</a>
+        <div class="social-icons">
+            <a href="#"><img src="/images/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="/images/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="/images/ig.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>

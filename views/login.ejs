@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Iniciar Sesión - Eco Culiacán</title>
+    <link rel="stylesheet" href="/css/style.css" /> 
+</head>
+<body>
+
+<header class="encabezado">
+    <div class="logo">
+        <a href="/"><img src="/images/ECO.png" alt="Logo Eco Culiacán" class="logo"/><span></span></a>
+    </div>
+    <a href="/registro"><button class="btn-registrarme">Registrarme</button></a>
+</header>
+
+<div class="contenedor-principal-centrado">
+    <main class="contenedor-login">
+                <div class="iconousuario-container">
+            <img src="/images/usuario.png" alt="Icono de Usuario" class="iconousuario-img">
+        </div>
+
+        <h1>Iniciar Sesión</h1>
+
+        <% if (success_msg && success_msg.length > 0) { %>
+            <div class="flash-message success">
+                <%= success_msg %>
+            </div>
+        <% } %>
+        <% if (error_msg && error_msg.length > 0) { %>
+            <div class="flash-message error">
+                <%= error_msg %>
+            </div>
+        <% } %>
+        <% if (error && error.length > 0) { %> <div class="flash-message error">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form class="formulario" action="/login" method="POST">
+            <label for="usuario">Usuario</label>
+<div class="input-container"> 
+    <input type="text" id="usuario" name="username" placeholder="Ingresa tu usuario" required/> 
+    <span class="input-icon">
+        <img src="/images/iconousuario.png" alt="Icono de Usuario">
+    </span>
+</div>
+            <label for="contrasena">Contraseña</label>
+            <div class="password-container">
+                <input type="password" id="contrasena" name="password" placeholder="Contraseña" required/> 
+                <span class="toggle-password" onclick="togglePasswordVisibility('contrasena', this)">
+                    <img src="/images/ojo.png" alt="Mostrar/Ocultar Contraseña" id="toggleIcon">
+                </span>
+            </div>
+            
+            <button type="submit" class="btn-iniciar">Iniciar Sesión</button>
+        </form>
+        <p style="margin-top: 20px;">¿No tienes una cuenta? <a href="/registro">Regístrate aquí</a></p>
+    </main>
+</div>
+
+<footer class="pie">
+    <p><em>Menos basura, más futuro</em></p>
+    <a href="https://ECOCuliacan.com.mx" target="_blank">ecogreen.com.mx</a>
+    <div class="redes">
+        <a href="#"><img src="/images/facebook.png" alt="Facebook" class="social-icon"></a>
+        <a href="#"><img src="/images/twitter.png" alt="Twitter" class="social-icon"></a>
+        <a href="#"><img src="/images/ig.png" alt="Instagram" class="social-icon"></a>
+    </div>
+</footer>
+
+<script>
+    function togglePasswordVisibility(fieldId, iconElement) {
+        const passwordField = document.getElementById(fieldId);
+        const toggleIcon = iconElement.querySelector('img');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleIcon.src = '/images/ojo.png'; // Cambia al icono de ojo abierto
+            toggleIcon.alt = 'Ocultar Contraseña';
+        } else {
+            passwordField.type = 'password';
+            toggleIcon.src = '/images/ojoff.png'; // Cambia al icono de ojo cerrado
+            toggleIcon.alt = 'Mostrar Contraseña';
+        }
+    }
+</script>
+
+</body>
+</html>
