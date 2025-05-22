@@ -1,7 +1,7 @@
 # ECO Culiacán: Sistema Inteligente de Gestión de Residuos
 
 ![Logo de ECO Culiacán](/public/images/ECO.png)
-![Logo de_camion](/public/images/camion.gif)
+<img src="/public/images/camion.gif" alt="Logo de ECO Culiacán" width="200"/>
 
 ## Tabla de Contenidos
 
