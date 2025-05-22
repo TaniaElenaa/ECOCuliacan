@@ -1,6 +1,6 @@
 # ECO Culiacán: Sistema Inteligente de Gestión de Residuos
 
-![Banner del Proyecto ECO Culiacán](ECO.png) 
+![Logo de ECO Culiacán](/public/images/ECO.png)
 ## Tabla de Contenidos
 
 - [Introducción](#-introducción)
