@@ -71,7 +71,7 @@ Esta arquitectura permite que los componentes operen de forma independiente, fac
 * **MongoDB:** Base de datos NoSQL orientada a documentos.
 
 ## Estructura del Proyecto
-```├── public/                # Archivos estáticos (CSS, JS del cliente, imágenes)```
+├── public/                # Archivos estáticos (CSS, JS del cliente, imágenes)
 │   ├── css/
 │   │   └── style.css      # Estilos globales (si decides usarlo separado)
 │   ├── images/
@@ -97,7 +97,7 @@ Esta arquitectura permite que los componentes operen de forma independiente, fac
 ├── server.js              # Archivo principal de la aplicación Node.js
 ├── package.json           # Metadatos del proyecto y dependencias
 ├── package-lock.json      # Bloqueo de versiones de dependencias
-```└── README.md              # Este archivo```
+└── README.md              # Este archivo
 ## Instalación y Uso
 
 Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
