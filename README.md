@@ -3,57 +3,118 @@
 ![Logo de ECO Culiacán](/public/images/ECO.png)
 <img src="/public/images/camion.gif" alt="Logo de ECO Culiacán" width="200"/>
 
-## Tabla de Contenidos
+# ECO Culiacán: Sistema Inteligente de Gestión de Residuos
 
-- [Introducción](#-introducción)
-- [Características Principales](#-características-principales)
-- [Arquitectura del Sistema](#-arquitectura-del-sistema)
-- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Instalación y Uso](#-instalación-y-uso)
-  - [Prerrequisitos](#prerrequisitos)
-  - [Configuración del Entorno](#configuración-del-entorno)
-  - [Ejecución del Proyecto](#ejecución-del-proyecto)
-- [Rutas de la Aplicación Web](#-rutas-de-la-aplicación-web)
-- [Contacto](#-contacto)
+![Logo de ECO Culiacán](/public/images/ECO.png)
+<img src="/public/images/camion.gif" alt="Logo de ECO Culiacán" width="200"/>
+
+**Producto 2: Código y Documentación**
+
+## 👥 Integrantes del Equipo
+
+* BARRAZA GONZALEZ, VICTOR HUGO
+* CHAVEZ ARMENTA, TANIA ELENA
+* JUAREZ VERDUGO, MICHELLE ALEJANDRA
+* MATURÍN LAO, CESAR IVAN
+* OSUNA CASTRO, HECTOR MANUEL
+* URIAS JACOBO, LESLEY KIREY
+* VALENZUELA BENITEZ, JOSE IGNACIO
+
+Culiacán, Sinaloa, México. Mayo de 2025.
+
+## 📋 Tabla de Contenidos
+
+-   [Introducción](#-introducción)
+-   [Resumen del Sistema](#-resumen-del-sistema)
+-   [Requisitos](#-requisitos)
+    -   [Funcionales y No Funcionales](#funcionales-y-no-funcionales)
+    -   [Técnicos](#técnicos)
+-   [Arquitectura del Sistema](#-arquitectura-del-sistema)
+-   [Tecnologías Utilizadas](#-tecnologías-utilizadas)
+-   [Estructura del Proyecto](#-estructura-del-proyecto)
+-   [Instalación](#-instalación)
+    -   [Prerrequisitos](#prerrequisitos)
+    -   [Configuración del Entorno](#configuración-del-entorno)
+    -   [Ejecución del Proyecto](#ejecución-del-proyecto)
+-   [Uso del Sistema](#-uso-del-sistema)
+    -   [Clase CRUD Implementada](#clase-crud-implementada)
+    -   [Flujo de Uso](#flujo-de-uso)
+-   [Rutas de la Aplicación Web](#-rutas-de-la-aplicación-web)
+-   [Base de Datos (Modelado)](#-base-de-datos-modelado)
+-   [Mantenimiento y Actualizaciones](#-mantenimiento-y-actualizaciones)
+-   [Pruebas](#-pruebas)
+-   [Seguridad](#-seguridad)
+-   [Referencias y Recursos](#-referencias-y-recursos)
+-   [Contacto](#-contacto)
+
+---
 
 ## Introducción
 
-**ECO Culiacán** es un sistema inteligente diseñado para revolucionar la gestión tradicional de residuos en la ciudad de Culiacán, Sinaloa. Nuestro objetivo es optimizar la recolección de basura, facilitar la interacción entre ciudadanos y personal de recolección, y promover una ciudad más limpia y sostenible.
+La gestión tradicional de residuos en Culiacán a menudo presenta desafíos en cuanto a eficiencia, planificación y comodidad para la ciudadanía, generando inconvenientes y afectando el entorno urbano. Ante esta necesidad de optimización y con la visión de construir una ciudad más limpia y sostenible, presentamos ECO Culiacán, un sistema innovador diseñado para revolucionar la forma en que los usuarios solicitan y programan la recolección de su basura, ofreciendo un servicio más eficiente a las necesidades de la población.
 
-Este repositorio contiene el código fuente y la documentación para el desarrollo del **Portal Web** de ECO Culiacán, que permite a los usuarios iniciar sesión y gestionar sus reportes, así como un panel de administración para la gestión de operaciones (si aplica).
+Este documento y el código adjunto corresponden al **Producto 2** del curso, centrándonos en el desarrollo del portal web, la autenticación de usuarios y la implementación de una funcionalidad CRUD esencial.
 
-## Características Principales
+##Resumen del Sistema
 
-* **Autenticación de Usuarios:** Registro e inicio de sesión seguro para ciudadanos y personal de recolección/administración.
-* **Gestión de Reportes:** (Menciona si los usuarios pueden ver sus reportes, crear nuevos, etc. Si es solo login, puedes omitir esto por ahora o indicar que es una funcionalidad futura).
-* **Interfaz Responsiva:** Adaptable a diferentes tamaños de pantalla (escritorio, tabletas, móviles).
-* **Notificaciones Flash:** Mensajes de éxito o error para una mejor experiencia de usuario.
-* **Seguimiento de Contraseña:** Funcionalidad para mostrar/ocultar la contraseña en el formulario de login.
-* **Integración Social:** Enlaces a las redes sociales de ECO Culiacán en el pie de página.
+ECO Culiacán es un sistema inteligente de gestión de residuos cuyo objetivo es optimizar la recolección de basura, facilitar la interacción entre ciudadanos y personal de recolección, y promover una ciudad más limpia y sostenible en Culiacán, Sinaloa. A través de un portal web intuitivo, los usuarios pueden registrarse, iniciar sesión y gestionar sus interacciones con el sistema de recolección.
 
-## Arquitectura del Sistema
+## Requisitos
 
-El sistema ECO Culiacán sigue una arquitectura **Cliente-Servidor en Capas**, diseñada para ser modular, escalable y fácil de mantener.
+### Funcionales y No Funcionales
 
-* **Capa de Presentación (Frontend):**
-    * **Aplicación Móvil:** Interfaz de usuario para dispositivos móviles (Android/iOS).
-    * **Portal Web (Este Proyecto):** Interfaz de usuario accesible desde navegadores web para ciudadanos y administradores.
-    * Ambas interfaces se comunican con el backend a través de una **API REST**.
+**Requisitos Funcionales:**
 
-* **Capa de Lógica de Negocio (Backend):**
-    * Un servidor backend (basado en **Node.js** con **Express.js** en este caso para el portal web, o el lenguaje/framework que uses para tu backend principal) que procesa la lógica del sistema: validación de reportes, asignación de rutas, gestión de usuarios, etc.
+* **RF1: Autenticación de Usuarios:**
+    * RF1.1: El sistema debe permitir a los usuarios registrarse con un nombre de usuario y contraseña.
+    * RF1.2: El sistema debe permitir a los usuarios iniciar sesión con sus credenciales registradas.
+    * RF1.3: El sistema debe mantener la sesión del usuario activa mientras navega por las páginas protegidas.
+    * RF1.4: El sistema debe permitir a los usuarios cerrar sesión de forma segura.
+* **RF2: Gestión de [Nombre de tu Clase CRUD, ej. Reportes]:**
+    * RF2.1: El sistema debe permitir a los usuarios [Crear/Registrar] nuevos [ej. reportes de basura].
 
-* **Capa de Datos:**
-    * **Base de Datos (MongoDB):** Almacena toda la información del sistema (usuarios, reportes, rutas, vehículos, recolecciones, etc.).
+* **RF3: Interfaz de Usuario:**
+    * RF3.1: La interfaz del portal web debe ser intuitiva y fácil de usar.
+    * RF3.2: El sistema debe mostrar mensajes claros de éxito o error al usuario (notificaciones flash).
 
-Esta arquitectura permite que los componentes operen de forma independiente, facilitando futuras mejoras y la adaptación a nuevos requisitos.
+**Requisitos No Funcionales:**
 
-## Tecnologías Utilizadas
+* **RNF1: Usabilidad:**
+    * RNF1.1: La interfaz de usuario debe ser responsiva y adaptarse correctamente a diferentes tamaños de pantalla (escritorio, tabletas, móviles).
+    * RNF1.2: El flujo de registro e inicio de sesión debe ser directo y sin pasos innecesarios.
+* **RNF2: Rendimiento:**
+    * RNF2.1: El tiempo de respuesta de las operaciones principales (login, registro, CRUD) no debe exceder los 3 segundos.
+* **RNF3: Seguridad:**
+    * RNF3.1: Las contraseñas de los usuarios deben ser almacenadas de forma segura (encriptadas).
+    * RNF3.2: Las sesiones de usuario deben ser gestionadas de forma segura.
+* **RNF4: Mantenibilidad:**
+    * RNF4.1: El código debe estar organizado y comentado para facilitar su comprensión y futuras modificaciones.
+
+###Técnicos
+
+* **Entorno de Desarrollo:** Node.js.
+* **Gestor de Paquetes:** npm.
+* **Base de Datos:** MongoDB.
+* **Navegador Web:** Compatible con los navegadores modernos (Chrome, Firefox, Edge, Safari).
+
+##Arquitectura del Sistema
+
+El sistema ECO Culiacán sigue una arquitectura **Cliente-Servidor en Capas**, diseñada para ser modular, escalable y fácil de mantener. Se compone principalmente de una aplicación móvil (futuro desarrollo), un portal web (este proyecto), un servidor backend y una base de datos.
+
+**Componentes Principales:**
+
+* **Cliente Móvil y Web:** Representan las interfaces de usuario a través de las cuales los ciudadanos interactúan con el sistema. El Portal Web (este proyecto) es uno de los clientes.
+* **Servidor Backend:** El corazón de la aplicación, implementado con Node.js y Express.js, encargado de la lógica de negocio, procesamiento de solicitudes y comunicación con la base de datos.
+* **Base de Datos (MongoDB):** Almacena de forma persistente toda la información del sistema, como datos de usuarios, reportes de residuos, rutas, etc.
+* **API REST:** El canal de comunicación estandarizado que permite la interacción entre los clientes (móvil y web) y el servidor backend.
+
+Esta arquitectura fue elegida por su **modularidad**, **facilidad de mantenimiento** y **escalabilidad**, permitiendo que los componentes funcionen de forma independiente y facilitando futuras mejoras y adaptaciones.
+
+##Tecnologías Utilizadas
 
 ### Frontend (Portal Web)
 * **HTML5:** Estructura de la página web.
-* **CSS:** Estilos y diseño responsivo.
+* **CSS3:** Estilos y diseño responsivo.
 * **EJS (Embedded JavaScript):** Motor de plantillas para renderizar vistas dinámicas desde el servidor.
 * **JavaScript (Vanilla JS):** Lógica del lado del cliente para interactividad (ej. mostrar/ocultar contraseña).
 
@@ -65,10 +126,11 @@ Esta arquitectura permite que los componentes operen de forma independiente, fac
 * **`passport` & `passport-local`:** Módulos para autenticación de usuarios (estrategia local con usuario y contraseña).
 * **`bcryptjs`:** Librería para cifrado de contraseñas (hashing).
 * **Mongoose:** Librería para modelado de objetos MongoDB en Node.js, facilitando la interacción con la base de datos.
-* **`mongodb` (o `mongoose`):** Driver para conexión con la base de datos MongoDB.
 
 ### Base de Datos
 * **MongoDB:** Base de datos NoSQL orientada a documentos.
+
+
 
 ## Estructura del Proyecto
     ├── public/                # Archivos estáticos (CSS, JS del cliente, imágenes)
