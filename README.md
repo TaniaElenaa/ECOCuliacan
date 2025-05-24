@@ -93,7 +93,7 @@ ECO Culiacán es un sistema inteligente de gestión de residuos cuyo objetivo es
 * **Base de Datos:** MongoDB.
 * **Navegador Web:** Compatible con los navegadores modernos (Chrome, Firefox, Edge, Safari).
 
-##Arquitectura del Sistema
+## Arquitectura del Sistema
 
 El sistema ECO Culiacán sigue una arquitectura **Cliente-Servidor en Capas**, diseñada para ser modular, escalable y fácil de mantener. Se compone principalmente de una aplicación móvil (futuro desarrollo), un portal web (este proyecto), un servidor backend y una base de datos.
 
@@ -106,7 +106,7 @@ El sistema ECO Culiacán sigue una arquitectura **Cliente-Servidor en Capas**, d
 
 Esta arquitectura fue elegida por su **modularidad**, **facilidad de mantenimiento** y **escalabilidad**, permitiendo que los componentes funcionen de forma independiente y facilitando futuras mejoras y adaptaciones.
 
-##Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Frontend (Portal Web)
 * **HTML5:** Estructura de la página web.
