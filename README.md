@@ -51,7 +51,7 @@ La gestión tradicional de residuos en Culiacán a menudo presenta desafíos en 
 
 Este documento y el código adjunto corresponden al **Producto 2** del curso, centrándonos en el desarrollo del portal web, la autenticación de usuarios y la implementación de una funcionalidad CRUD esencial.
 
-##Resumen del Sistema
+## Resumen del Sistema
 
 ECO Culiacán es un sistema inteligente de gestión de residuos cuyo objetivo es optimizar la recolección de basura, facilitar la interacción entre ciudadanos y personal de recolección, y promover una ciudad más limpia y sostenible en Culiacán, Sinaloa. A través de un portal web intuitivo, los usuarios pueden registrarse, iniciar sesión y gestionar sus interacciones con el sistema de recolección.
 
@@ -86,7 +86,7 @@ ECO Culiacán es un sistema inteligente de gestión de residuos cuyo objetivo es
 * **RNF4: Mantenibilidad:**
     * RNF4.1: El código debe estar organizado y comentado para facilitar su comprensión y futuras modificaciones.
 
-###Técnicos
+### Técnicos
 
 * **Entorno de Desarrollo:** Node.js.
 * **Gestor de Paquetes:** npm.
