@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO Culiacán - Recolección de Residuos</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/ECO.png">
 </head>
 <body>
     <header class="encabezado">
@@ -53,28 +54,15 @@
 
     <footer class="pie">
         <p>Menos basura, más futuro</p>
-        <a href="https://ecogreen.com.mx" target="_blank">ecogreen.com.mx</a>
+        <a href="https://ECOCuliacan.com.mx/" target="_blank">ECOCuliacán.com.mx</a>
         <div class="redes">
-            <a href="#"><img src="/images/facebook.png" alt="Facebook" class="social-icon"></a>
-            <a href="#"><img src="/images/twitter.png" alt="Twitter" class="social-icon"></a>
-            <a href="#"><img src="/images/ig.png" alt="Instagram" class="social-icon"></a>
+            <a href="https://www.facebook.com/share/16Je91rWsc" target="_blank"><img src="/images/facebook.png" alt="Facebook" class="social-icon"></a>
+            <a href="https://x.com/ECOCuliacan" target="_blank"><img src="/images/twitter.png" alt="Twitter" class="social-icon"></a>
+            <a href="https://www.instagram.com/eco.culiacan/profilecard/" target="_blank"><img src="/images/ig.png" alt="Instagram" class="social-icon"></a>
         </div>
     </footer>
 
-    <script>
-        window.onload = function() {
-            const successMessageDiv = document.querySelector('.flash-message.success');
-            const errorMessageDiv = document.querySelector('.flash-message.error');
-            const genericErrorDiv = document.querySelector('.flash-message.error[id="genericError"]'); 
+    <script src="/events.js"></script>
 
-            if (successMessageDiv && successMessageDiv.textContent.trim().length > 0) {
-                alert('Mensaje de Éxito: ' + successMessageDiv.textContent.trim());
-            } else if (errorMessageDiv && errorMessageDiv.textContent.trim().length > 0) {
-                alert('Mensaje de Error: ' + errorMessageDiv.textContent.trim());
-            } else if (genericErrorDiv && genericErrorDiv.textContent.trim().length > 0) {
-                alert('Mensaje de Error General: ' + genericErrorDiv.textContent.trim());
-            }
-        };
-    </script>
 </body>
 </html>
