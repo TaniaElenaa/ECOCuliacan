@@ -1,425 +1,647 @@
 /*! ********************************************* AJUSTES GENERALES *********************************************/
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff; /* Cambié el fondo a blanco */
-    color: #000000;       /* Cambié el color del texto a negro */
-    display: flex; /* Añadido para que el footer se pegue abajo */
-    flex-direction: column; /* Añadido para que el footer se pegue abajo */
-    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #000000; /* Cambié el color del texto a negro */
+  display: flex; /* Añadido para que el footer se pegue abajo */
+  flex-direction: column; /* Añadido para que el footer se pegue abajo */
+  min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
 }
 
 header.encabezado {
-    background-color: #fff;
-    padding: 15px 20px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #fff;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header.encabezado .logo img {
-    width: 150px;
-    height: auto;
+  width: 150px;
+  height: auto;
 }
 
 .btn-iniciar-sesion,
 .btn-registrarme {
-    background-color: #aabf40 !important; /* Verde que solicitaste */
-    color: white !important;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1em;
-    margin-left: 10px; /* Espacio entre los botones */
-    display: inline-block; /* Asegura que el padding y margen funcionen como un botón */
-    transition: all 0.2s;
-    width: 135px;
+  background-color: #aabf40 !important; /* Verde que solicitaste */
+  color: white !important;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1em;
+  margin-left: 10px; /* Espacio entre los botones */
+  display: inline-block; /* Asegura que el padding y margen funcionen como un botón */
+  transition: all 0.2s;
+  width: 135px;
 }
 .btn-iniciar-sesion:hover,
 .btn-registrarme:hover {
-    background-color: #8c9c32 !important;
+  background-color: #8c9c32 !important;
 }
 
-.main-content{
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
 }
 
-.main-content  h1 {
-    color: #28a745;
-    margin-bottom: 30px;
+.main-content h1 {
+  color: #28a745;
+  margin-bottom: 30px;
 }
 
 .main-content .btn-ingresar {
-    background-color: #28a745;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .main-content .btn-ingresar:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 .main-content img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 30px;
+  max-width: 100%;
+  height: auto;
+  margin-right: 5px;
 }
 
 footer.pie {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: auto;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
 }
 
 footer.pie a {
-    color: #007bff;
-    text-decoration: none;
+  color: #007bff;
+  text-decoration: none;
 }
 
 footer.pie .redes {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 footer.pie .redes a {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 footer.pie .redes img.social-icon {
-    width: 30px;
-    height: auto;
-    transition: transform 0.2s ease;
+  width: 30px;
+  height: auto;
+  transition: transform 0.2s ease;
 }
 footer.pie .redes img.social-icon:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* Estilos para mensajes flash */
 .flash-message {
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    width: 100%; /* Para que ocupe el ancho completo del contenedor */
-    box-sizing: border-box; /* Para que el padding no desborde */
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%; /* Para que ocupe el ancho completo del contenedor */
+  box-sizing: border-box; /* Para que el padding no desborde */
 }
 .flash-message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }
 .flash-message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.primary-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.secondary-btn {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.secondary-btn:hover {
+  background-color: #b7b8b9;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  margin: 0 10px;
+}
+
+.social-icons img {
+  width: 30px; /* Tamaño de los iconos sociales */
+  height: auto;
 }
 
 /* Media Queries para diferentes tamaños de pantalla */
 
 /* Pantallas más pequeñas (móviles y tablets pequeñas - hasta 768px de ancho) */
 @media screen and (max-width: 768px) {
-    header.encabezado .logo img {
-        width: 120px;
-    }
+  header.encabezado .logo img {
+    width: 120px;
+  }
 
-    .social-icon {
-        width: 25px;
-        margin-right: 8px;
-    }
+  .social-icon {
+    width: 25px;
+    margin-right: 8px;
+  }
 }
 
 /* Pantallas aún más pequeñas (móviles - hasta 480px de ancho) */
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.7em;
-    }
+  h1 {
+    font-size: 1.7em;
+  }
 
-    header.encabezado .logo img {
-        width: 100px;
-    }
+  header.encabezado .logo img {
+    width: 100px;
+  }
 
-    .header-buttons{
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-    }
-    
-    .header-buttons button{
-        margin: 5px;
-    }
+  .header-buttons {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
 
-    .social-icon {
-        width: 20px;
-        margin-right: 5px;
-    }
+  .header-buttons button {
+    margin: 5px;
+  }
+
+  .social-icon {
+    width: 20px;
+    margin-right: 5px;
+  }
 }
 
 /* Pantallas aún más pequeñas (móviles - hasta 280px de ancho) */
 @media screen and (max-width: 280px) {
-    header.encabezado{
-        flex-direction: column;
-    }
+  header.encabezado {
+    flex-direction: column;
+  }
 }
 
 /*! ********************************************* LOGIN *********************************************/
 /* Alineación para el contenedor principal centrado */
 .contenedor-principal-centrado {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 /* Estilos específicos para la página de inicio de sesión y registro (formularios) */
 /* Contenedores principales de login y registro */
-.contenedor-login, .contenedor-registro {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 400px; /* Max-width para login */
-    margin: 30px auto; /* Centrar y darle margen */
-    text-align: center;
-    flex-grow: 1; /* Para que ocupe el espacio y empuje el footer */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el contenido horizontalmente */
-    justify-content: center; /* Centra el contenido verticalmente */
+.contenedor-login,
+.contenedor-registro {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px; /* Max-width para login */
+  margin: 30px auto; /* Centrar y darle margen */
+  text-align: center;
+  flex-grow: 1; /* Para que ocupe el espacio y empuje el footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  justify-content: center; /* Centra el contenido verticalmente */
+}
+
+main.contenedor-login h1 {
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+main.contenedor-login .formulario label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 15px;
 }
 
 .contenedor-registro {
-    max-width: 450px; /* Ligeramente más ancho para registro si tiene más campos */
+  max-width: 450px; /* Ligeramente más ancho para registro si tiene más campos */
 }
 
 /* Estilos para los botones dentro de formularios login/registro */
-.btn-iniciar, .btn-registrar {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Para que el botón ocupe todo el ancho */
-    margin-top: 15px; /* Espacio entre el último campo y el botón */
+.btn-iniciar,
+.btn-registrar {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Para que el botón ocupe todo el ancho */
+  margin-top: 15px; /* Espacio entre el último campo y el botón */
 }
 
-.btn-iniciar:hover, .btn-registrar:hover {
-    background-color: #218838;
+.btn-iniciar:hover,
+.btn-registrar:hover {
+  background-color: #218838;
 }
 
 .iconousuario-img {
-    width: 100px;
+  width: 100px;
 }
 
 /* Este es el contenedor principal para campos que tendrán un icono (usuario, contraseña) */
 .input-container {
-    position: relative; /* Clave para posicionar el icono dentro */
-    margin-bottom: 15px; /* Espacio debajo de cada campo input con icono */
+  position: relative; /* Clave para posicionar el icono dentro */
+  margin-bottom: 15px; /* Espacio debajo de cada campo input con icono */
 }
 
 /* Contenedor para el input y el icono de mostrar/ocultar contraseña */
 .password-container {
-    position: relative;
-    margin-bottom: 15px; /* Mueve el margen a este contenedor */
+  position: relative;
+  margin-bottom: 15px; /* Mueve el margen a este contenedor */
 }
 
 /* Estilo para el icono dentro del input (para usuario y ojo de contraseña) */
-.input-icon, .toggle-password {
-    position: absolute;
-    right: 10px; /* Distancia desde el borde derecho del input */
-    top: 50%;
-    transform: translateY(-50%); /* Centra verticalmente el icono */
-    cursor: pointer; /* Indica que es clickeable */
-    display: flex; /* Para centrar la imagen si tiene algún padding */
-    align-items: center;
-    justify-content: center;
-    height: 100%; /* Para que el click área del span sea más grande */
-    padding: 0 5px; /* Pequeño padding para el click area */
+.input-icon,
+.toggle-password {
+  position: absolute;
+  right: 10px; /* Distancia desde el borde derecho del input */
+  top: 50%;
+  transform: translateY(-50%); /* Centra verticalmente el icono */
+  cursor: pointer; /* Indica que es clickeable */
+  display: flex; /* Para centrar la imagen si tiene algún padding */
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Para que el click área del span sea más grande */
+  padding: 0 5px; /* Pequeño padding para el click area */
 }
 
-.input-icon img, .toggle-password img {
-    width: 24px; /* Tamaño de los iconos (ojo, usuario en input) */
-    height: 24px;
+.input-icon img,
+.toggle-password img {
+  width: 24px; /* Tamaño de los iconos (ojo, usuario en input) */
+  height: 24px;
 }
 
 /* Estilo para los inputs de texto y contraseña DENTRO de un .input-container */
 .input-container input[type="text"],
 .input-container input[type="password"],
-.input-container select { /* Aseguramos que select también se vea bien si lo metemos aquí */
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    padding-right: 40px; /* Deja espacio para el icono (24px de icono + 10px de padding derecho + 6px de margen) */
+.input-container select {
+  /* Aseguramos que select también se vea bien si lo metemos aquí */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding-right: 40px; /* Deja espacio para el icono (24px de icono + 10px de padding derecho + 6px de margen) */
 }
 
 .password-container input[type="password"],
 .password-container input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    padding-right: 40px; /* Deja espacio para el icono */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding-right: 40px; /* Deja espacio para el icono */
 }
 
 /*! ********************************************* REGISTRO *********************************************/
+
+main.contenedor-registro h1 {
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+main.contenedor-registro .formulario label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 15px;
+}
+
+main.contenedor-registro .formulario input[type="text"],
+main.contenedor-registro .formulario select {
+  /* Añadido select para el género */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.error-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  text-align: left;
+  padding: 10px;
+  width: 100%; /* Para que ocupe el ancho completo del contenedor */
+  box-sizing: border-box;
+}
+
+/*! ********************************************* DONACION *********************************************/
+.donation-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.donation-container h1 {
+  text-align: center;
+}
+
 .form-group {
-    margin-bottom: 20px; /* Margen entre grupos de formularios */
+  margin-bottom: 20px; /* Margen entre grupos de formularios */
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
-.button-group {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+.form-group input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
 }
 
-.primary-btn, .secondary-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-.primary-btn {
-    background-color: #28a745;
-    color: white;
+.btn-donate {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+.btn-donate:hover {
+  background-color: #218838;
 }
 
-.secondary-btn {
-    background-color: #f8f9fa;
-    color: #333;
-    border: 1px solid #ccc;
+/*! ********************************************* CREAR REPORTE *********************************************/
+.report-form-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  text-align: left;
+  display: flex; /* Añadido para controlar el layout interno */
+  flex-direction: column; /* Para apilar elementos verticalmente */
+  align-items: center; /* Para centrar la imagen y el título */
 }
 
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+/* Estilo para la imagen dentro del contenedor del formulario */
+.report-form-container img {
+  width: 80px; /* Ajusta el tamaño según tu imagen y diseño */
+  height: auto;
+  margin-bottom: 20px; /* Espacio debajo de la imagen */
 }
 
-.social-icons a {
-    margin: 0 10px;
+.report-form-container h1 {
+  text-align: center;
 }
 
-.social-icons img {
-    width: 30px; /* Tamaño de los iconos sociales */
-    height: auto;
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group textarea {
+  width: calc(100% - 20px); /* Ajustado para padding */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
 }
 
-/* Estilos específicos de la página de Registro */
-.register-container {
-    max-width: 600px;
-    margin: 30px auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Flex grow para que ocupe espacio y empuje el footer si es el main content */
-    flex-grow: 1; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra el contenido verticalmente si es un solo elemento */
-    align-items: center; /* Centra el contenido horizontalmente si es un solo elemento */
-    text-align: center; /* Alinea el texto centralmente */
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
-.terms {
-    display: flex;
-    align-items: center;
+.btn-submit {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+.btn-submit:hover {
+  background-color: #218838;
 }
 
-.terms input[type="checkbox"] {
-    margin-right: 10px;
+.autocomplete-list {
+  background-color: white;
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-
-
-/* Estilos específicos para otras páginas */
-.hero {
-    text-align: center;
-    padding: 50px 20px;
+.autocomplete-list li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
 }
 
-.hero h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+.autocomplete-list li:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
 }
 
-.hero .main-action-btn {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #28a745;
-    color: white;
-    border-radius: 8px;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 20px;
+/*! ********************************************* REPORTE CREADO *********************************************/
+.confirmation-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ecofactura-image {
-    max-width: 80%;
-    height: auto;
-    margin: 20px auto;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.error-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 0 15px 0;
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    text-align: left;
-    padding: 10px;
-    width: 100%; /* Para que ocupe el ancho completo del contenedor */
-    box-sizing: border-box;
+.confirmation-container img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-.container {
-    width: 95%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.confirmation-container p {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 30px;
 }
 
+.btn-accept {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+  width: 80%;
+  max-width: 200px;
+  margin-bottom: 15px; /* Espacio entre botones */
+  text-decoration: none; /* Si es un enlace */
+  display: inline-block; /* Para centrarlo */
+}
+.btn-accept:hover {
+  background-color: #218838;
+}
 
+.btn-donate-alt {
+  background-color: #007bff; /* Un color diferente para el botón de donar si se muestra */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+  width: 80%;
+  max-width: 200px;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-donate-alt:hover {
+  background-color: #0056b3;
+}
+
+/*! ********************************************* SELECCION ZONA *********************************************/
+.map-container {
+  width: 90%;
+  max-width: 800px;
+  height: 400px; /* Altura fija para el mapa */
+  background-color: #e0e0e0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  /* Aquí iría un mapa real (Google Maps, OpenStreetMap, etc.) */
+  /* Por ahora, es un placeholder */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #666;
+  background-image: url("/images/mapa_culiacan_ejemplo.png"); /* Ruta a una imagen de mapa si tienes una */
+  background-size: cover;
+  background-position: center;
+}
+
+.zone-selection-form {
+  width: 90%;
+  max-width: 800px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zone-selection-form button {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 200px;
+}
+.zone-selection-form button:hover {
+  background-color: #218838;
+}
