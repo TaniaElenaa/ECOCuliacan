@@ -1,6 +1,10 @@
+// Carga las variables de entorno desde el archivo .env
+require('dotenv').config();
+
 const flash = require('connect-flash');
 const User = require('./models/User'); // Importa el modelo de usuario
 const Report = require('./models/Report'); // Importa el modelo de reporte
+const Donation = require('./models/Donation'); // Importa el modelo de reporte
 
 const express = require('express');
 const app = express();
@@ -12,10 +16,12 @@ const bcrypt = require('bcryptjs'); // Necesario para hashing de contraseñas
 
 const path = require('path'); // Módulo para trabajar con rutas de archivos
 
-const port = 3000; // Puedes cambiar el puerto si es necesario
+const {port, mongodb_URI, sessionSecret} = process.env
+
+console.log({port, mongodb_URI, sessionSecret});
 
 // Conexión a MongoDB
-mongoose.connect('mongodb://localhost:27017/ECOCuliacan', {
+mongoose.connect(mongodb_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -33,7 +39,7 @@ app.use(express.json()); // Para parsear cuerpos de solicitud JSON
 
 // Configuración de sesiones
 app.use(session({
-    secret: 'un_secreto_muy_seguro_y_largo_para_tu_sesion', // CAMBIA ESTO: Usa una cadena larga y aleatoria en producción
+    secret: sessionSecret, // Usa la variable de entorno
     resave: false, // No guardar la sesión si no ha cambiado
     saveUninitialized: false // No guardar sesiones nuevas sin inicializar
 }));
@@ -219,7 +225,7 @@ function ensureAuthenticated(req, res, next) {
 // --- RUTAS ESPECÍFICAS DE LA APLICACIÓN (REPORTES Y DONACIÓN) ---
 
 // Ruta para mostrar la página de selección de zona (protegida)
-app.get('/seleccion-zona', ensureAuthenticated, (req, res) => {
+app.get('/seleccion-zona', (req, res) => {
     res.render('seleccion_zona');
 });
 
@@ -232,7 +238,10 @@ app.post('/seleccion-zona', ensureAuthenticated, (req, res) => {
 
 // Ruta para mostrar el formulario de crear reporte (protegida)
 app.get('/crear-reporte', ensureAuthenticated, (req, res) => {
-    res.render('crear_reporte');
+    res.render('crear_reporte', { 
+        error_msg: null,
+        formData: {},
+    });
 });
 
 // Ruta para procesar el envío del reporte (protegida)
@@ -246,13 +255,24 @@ app.post('/crear-reporte', ensureAuthenticated, async (req, res) => {
         errors.push({ msg: 'Por favor, rellene todos los campos del reporte.' });
     }
 
+    // Asegurarse de que phoneNumber y zipCode sean tratados como cadenas para la validación de longitud
+    const phoneNumberStr = String(phoneNumber);
+    const zipCodeStr = String(zipCode);
+
+    if (phoneNumberStr.length !== 10) {
+        errors.push({ msg: 'El número de teléfono debe tener exactamente 10 dígitos.' });
+    }
+
+    if (zipCodeStr.length !== 5) {
+        errors.push({ msg: 'El código postal debe tener exactamente 5 dígitos.' });
+    }
+
     if (errors.length > 0) {
         // Usa req.flash para almacenar los mensajes de error
-        req.flash('error_msg', errors.map(e => e.msg).join(', '));
-        return res.render('crear_reporte', {
-            // Pasamos los datos del formulario de vuelta para que el usuario no los pierda
-            fullName, address, zipCode, phoneNumber, problemDescription,
-            // Los mensajes flash se recuperan automáticamente en res.locals.error_msg
+        req.flash('error_msg', errors.map(e => e.msg).join('<br>'));
+        return res.render('crear_reporte', { 
+            error_msg: errors.map(e => e.msg).join('<br>'),
+            formData: { fullName, address, zipCode, phoneNumber, problemDescription },
         });
     } else {
         try {
@@ -295,17 +315,88 @@ app.get('/reporte-creado', ensureAuthenticated, (req, res) => {
 });
 
 
-// Ruta para mostrar la página de donación
-app.get('/donacion', (req, res) => {
-    res.render('donacion');
+// Asegúrate de que tienes un modelo 'Donation' definido en algún lugar, por ejemplo:
+// const Donation = require('../models/Donation'); // Si usas Mongoose
+
+// Ruta para mostrar el formulario de donación
+app.get('/donacion', ensureAuthenticated, (req, res) => {
+    res.render('donacion', {
+        error_msg: null,
+        formData: {}, // Para rellenar el formulario si hay errores
+    });
 });
 
-// Ruta para procesar la donación (ejemplo básico, sin integración de pagos reales)
-app.post('/donacion', (req, res) => {
-    // req.flash('success_msg', '¡Gracias por tu donación!');
-    res.redirect('/');
+// Ruta para procesar el envío de la donación
+app.post('/donacion', ensureAuthenticated, async (req, res) => {
+    const { cardNumber, cardHolder, expiryDate, cvv } = req.body;
+
+    let errors = [];
+
+    // Validaciones de la donación
+    if (!cardNumber || !cardHolder || !expiryDate || !cvv) {
+        errors.push({ msg: 'Por favor, rellene todos los campos de la tarjeta.' });
+    }
+
+    // Validación de cardNumber (16 dígitos)
+    if (cardNumber.length !== 16) {
+        errors.push({ msg: 'El número de tarjeta debe tener exactamente 16 dígitos numéricos.' });
+    }
+
+    // Validación de expiryDate (MM/AA)
+    // Regex para MM/AA (01-12/00-99)
+    const expiryDateRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+    if (!expiryDateRegex.test(expiryDate)) {
+        errors.push({ msg: 'La fecha de vencimiento debe estar en formato MM/AA (por ejemplo, 12/26).' });
+    } else {
+        // Opcional: Validar que la fecha no haya expirado
+        const [month, year] = expiryDate.split('/').map(Number);
+        const currentYear = new Date().getFullYear() % 100; // Últimos dos dígitos del año actual
+        const currentMonth = new Date().getMonth() + 1; // Mes actual (1-12)
+
+        if (year < currentYear || (year === currentYear && month < currentMonth)) {
+            errors.push({ msg: 'La tarjeta ha expirado.' });
+        }
+    }
+
+    // Validación de cvv (3 dígitos)
+    const cvvStr = String(cvv);
+    if (cvvStr.length !== 3 || !/^\d+$/.test(cvvStr)) {
+        errors.push({ msg: 'El CVV debe tener exactamente 3 dígitos numéricos.' });
+    }
+
+    if (errors.length > 0) {
+        // Almacena y envía los mensajes de error de vuelta al formulario
+        req.flash('error_msg', errors.map(e => e.msg).join('<br>'));
+        return res.render('donacion', {
+            error_msg: errors.map(e => e.msg).join('<br>'),
+            formData: { cardNumber, cardHolder, expiryDate, cvv }, // Para rellenar los campos
+        });
+    } else {
+        try {
+            const newDonation = new Donation({
+                cardHolder: cardHolder, // Podrías guardar el titular, pero NO el número, fecha, CVV
+                // amount: req.body.amount, // Si tu formulario incluye un campo para el monto
+                userId: req.user.id, // Asigna el ID del usuario logueado
+            });
+
+            await newDonation.save();
+            req.flash('success_msg', '¡Gracias por tu donación! Transacción procesada.');
+
+            // Redirige a una página de confirmación de donación
+            res.redirect('/donacion-exitosa');
+
+        } catch (err) {
+            console.error(err);
+            req.flash('error_msg', 'Error al procesar la donación. Por favor, inténtelo de nuevo.');
+            res.redirect('/donacion');
+        }
+    }
 });
 
+// Ruta para mostrar la página de donación exitosa
+app.get('/donacion-exitosa', ensureAuthenticated, (req, res) => {
+    res.render('donacion_exitosa'); 
+});
 
 // Iniciar el servidor
 app.listen(port, () => {
