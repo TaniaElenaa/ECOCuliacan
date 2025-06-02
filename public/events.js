@@ -52,12 +52,12 @@ function inputName(element) {
         case 'cardHolder':
             // Solo permite letras y espacios para nombres
             element.value = input.replace(/[^A-Za-z\s]/g, '');
-            // Limpia cualquier mensaje de validación personalizado establecido previamente
+            // Limpia cualquier mensaje de validación personalizado creado previamente
             element.setCustomValidity('');
             break;
 
         case 'expiryDate':
-            // Elimina cualquier carácter que no sea un dígito
+            // Elimina cualquier carácter que no sea un numero/digito
             input = input.replace(/\D/g, '');
 
             // Agrega la barra después de los primeros 2 dígitos (el mes)
