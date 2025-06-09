@@ -3,7 +3,7 @@
 <img src="/public/images/ECO.png" alt="Logo de ECO Culiacán" width="200"/>
 
 
-**Producto 2: Código y Documentación**
+
 
 ## 👥 Integrantes del Equipo
 
